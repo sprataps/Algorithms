@@ -18,10 +18,17 @@ class LinkedList(object):
         self.head=head
 
     #insert the new node at the head of the linked list
-    def insert(self,data):
+    def insert_at_beginning(self,data):
         new_node=Node(data)
         new_node.set_next(self.head)
         self.head=new_node
+
+    def insert_at_end(self,data):
+        new_node=Node(data)
+        current=head
+        while(current.get_next()!=None):
+            current=current.get_next()
+        current.set_next(new_node)
 
     def size(self):
         count=0
