@@ -1,5 +1,14 @@
 '''
 Implement a Stack in which you can get min element in O(1) time and O(1) space.
+Two things to see here:
+1) if the value we are inserting is lesser than min, if it is it must be inserted in a way that should reflect its minimum value when we
+pop it out. this is acheived using the equation that 2(val)-previousminValue < val if val < previousMinValue
+2) if we are poppint out the minimum value, then the min value must be updated to the previous min Value that was inserted before the min
+Value. This is achieved by 2(presentMinValue)-(popping value(if lesser than min)). this actually cancels out the term with coefficient 2 
+in both the equations 1 and 2 and leaves us with previousMinValue from equation1.
+
+The same logic goes for implementing the max value.
+
 '''
 
 class MinStack:
