@@ -1,14 +1,14 @@
 class Node:
-    def __init__(self,val,next=None):
+    def __init__(self,val=None):
         self.val=val
-        self.next=next
+        self.next=None
 
     def __str__(self):
         return str(self.val)
 
 class LinkedList:
-    def __init__(self,val):
-        self.head=Node(val)
+    def __init__(self):
+        self.head=None
 
     def getNext(self):
         return self.next
@@ -42,12 +42,13 @@ class LinkedList:
         if not self.head:
             return 0
         else:
-            self._length(self.head)
+            return self._length(self.head)
     def _length(self,node):
         if not node:
             return 0
         else:
             return 1+(self._length(node.next))
+
     def reversePrint(self):
         if not self.head:
             return None
@@ -78,11 +79,22 @@ class LinkedList:
             return Node(value)
         else:
             self._insertRear(self.head,value)
+
     def _insertRear(self,node,value):
         if not node.next:
-            return node.next=Node(value)
+            node.next=Node(value)
+            return
         else:
             self._insertRear(node.next,value)
+
+    def insertFront(self,val):
+        if not self.head:
+             self.head=Node(val)
+             return
+        temp=Node(val)
+        temp.next=self.head
+        self.head=temp
+
     def deleteFirst(self):
         if not self.head:
             return None
@@ -96,8 +108,22 @@ class LinkedList:
         if not self.head:
             return None
         else:
-            self._reverseList(self.head)
-    def _reverseList(self,node):
+            self.head=self._reverseList(self.head,None)
+    def _reverseList(self,node,prev):
         if not node:
-            return None:
+            return prev
         else:
+            temp=node.next
+            node.next=prev
+
+            return self._reverseList(temp,node)
+
+l1=LinkedList()
+l1.insertFront(1)
+l1.insertRear(2)
+l1.insertRear(3)
+l1.insertFront(0)
+l1.printList()
+print("Reverse List: ")
+l1.reverseList()
+l1.printList()
