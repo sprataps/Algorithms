@@ -49,3 +49,9 @@ nums=[int(x) for x in input("Enter the initial array to sort").split()]
 o=heapsortClass()
 nums=o.heapsort(nums)
 print("Sorted array: "+ str(nums))
+
+'''
+Best , Average, Worst - O(nlogn)
+Inplace
+Not much stable
+'''
