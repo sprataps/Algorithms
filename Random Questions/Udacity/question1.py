@@ -12,7 +12,7 @@ def question1(s,t):
     print("Sorted substring: "+t)
     for i in range(0,len(s)):
         d[s[i]]=i
-    for i in range(l-1,len(s)-l): #O(n)
+    for i in range(0,len(s)): #O(n)
         if s[i] in t:
             temp="".join(sorted(s[i:i+l])) #O(nlogn)
             print(temp)
